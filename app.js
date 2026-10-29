@@ -1,6 +1,6 @@
 // Configure the public Supabase publishable key here. Never put a service-role key in this file.
 const SUPABASE_URL="https://wgticiijleeurkhoztlf.supabase.co";
-const SUPABASE_ANON_KEY="PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE";
+const SUPABASE_ANON_KEY="sb_publishable_upur5uILYLF32ymOFf18Xg_mAQ1Byhc";
 const ADMIN_EMAIL="akinyanmijoshua531@gmail.com", ACCOUNT_NUMBER="9021669942";
 const sb=window.supabase&&SUPABASE_ANON_KEY.startsWith("sb_publishable_")?window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
 const $=id=>document.getElementById(id), screens=["home","subjects","payment","quiz","results","admin","how"];
