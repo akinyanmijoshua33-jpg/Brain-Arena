@@ -1,5 +1,5 @@
 /* Brain Arena frontend. Set SUPABASE_URL and SUPABASE_ANON_KEY below after following README. */
-const SUPABASE_URL = "const SUPABASE_URL = "https://wgticiijleeurkhoztlf.supabase.co";
+const SUPABASE_URL = "const SUPABASE_URL = const SUPABASE_URL = "https://wgticiijleeurkhoztlf.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_upur5uILYLF32ymOFf18Xg_mAQ1Byhc";
 const ADMIN_EMAIL_HINT = "Use the admin account you create in Supabase Auth";
 const sb = (SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase) ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
