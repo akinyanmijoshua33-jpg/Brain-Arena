@@ -1,9 +1,251 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10152f"><title>Brain Arena</title><link rel="stylesheet" href="styles.css"><link rel="manifest" href="manifest.webmanifest"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body><header><a href="#" id="homeLink"><b class="logo">BA</b><span><b>Brain Arena</b><small>LEARN · PRACTISE · GROW</small></span></a><button class="ghost" id="adminOpen">Admin</button></header><main>
-<section id="home" class="screen hero"><div class="eyebrow">YOUR NEXT LEVEL STARTS HERE</div><h1>Train your brain.<br><span>Own the exam.</span></h1><p>Practise by subject, understand every answer, and track your progress.</p><button class="primary" id="startBtn">Start practising →</button> <button class="secondary" id="howBtn">How premium works</button><div class="stats"><b>30 <small>questions per subject</small></b><b>14 days <small>premium access</small></b><b>₦1,000 <small>premium fee</small></b></div></section>
-<section id="subjects" class="screen hidden"><div class="heading"><div><div class="eyebrow">PICK YOUR BATTLE</div><h2>Choose a subject</h2></div><button class="ghost" data-home>Home</button></div><p id="accessStatus" class="muted"></p><div id="subjectGrid" class="grid"></div><div id="lockedPanel" class="card hidden center"><h3>🔒 Unlock Premium</h3><p>Get 14 days of quiz access for ₦1,000.</p><button class="primary" id="payNow">Continue to payment →</button></div></section>
-<section id="payment" class="screen hidden"><div class="heading"><div><div class="eyebrow">PREMIUM ACCESS</div><h2>Pay and submit for approval</h2></div><button class="ghost" data-subjects>Back</button></div><div class="columns"><article class="card"><div class="eyebrow">TRANSFER ₦1,000</div><h3>OPay transfer details</h3><p class="muted">Transfer first, then attach your receipt.</p><div class="row"><span>Account number</span><b id="accountNumber">9021669942</b><button id="copyAccount" class="secondary">Copy</button></div><div class="row"><span>Account name</span><b>Joshua Jesuliho Akinyanmi</b></div><p class="warning">Submitting a receipt does not mean you have been approved. The admin will check the payment.</p><p>Paid twice? Contact <b>+2347042320940</b></p><p><a href="https://wa.me/2347042320940" target="_blank">WhatsApp support</a> · <a href="tel:+2347042320940">Call support</a></p></article><form id="paymentForm" class="card"><h3>Payment submission</h3><label>Full name<input id="studentName" required maxlength="100" placeholder="Your full name"></label><label>Gmail / email<input id="studentEmail" type="email" required maxlength="200" placeholder="you@example.com"></label><label>Transaction reference<input id="paymentRef" required maxlength="120" placeholder="Transfer reference"></label><label>Date and time<input id="paymentTime" type="datetime-local" required></label><label>Upload receipt<input id="receipt" type="file" accept="image/*,.pdf" required></label><small class="muted">Image or PDF, maximum 5 MB.</small><label>Note (optional)<textarea id="paymentNote" rows="3" maxlength="500"></textarea></label><button id="submitPayment" class="primary full" type="submit">Submit for admin approval</button><p id="paymentMessage" role="status" aria-live="polite"></p></form></div></section>
-<section id="quiz" class="screen hidden"><div class="heading"><div><div class="eyebrow">PRACTICE SESSION</div><h2 id="quizTitle"></h2></div><button class="ghost" id="exitQuiz">Exit</button></div><div class="row"><span id="questionCount"></span><b id="scoreNow"></b></div><div class="progress"><span id="progressFill"></span></div><article class="card"><div class="eyebrow" id="questionTopic"></div><h3 id="questionText"></h3><div id="options" class="options"></div><div id="explanation" class="explanation hidden"></div><button class="primary full" id="nextQuestion" disabled>Next question →</button></article></section>
-<section id="results" class="screen hidden center"><article class="card"><div class="eyebrow">SESSION COMPLETE</div><h2 id="resultTitle">Well done!</h2><div id="finalScore" class="score"></div><p id="resultSummary"></p><p id="resultSaved"></p><button id="againBtn" class="primary">Try this subject again</button> <button data-subjects class="secondary">Choose another subject</button></article></section>
-<section id="admin" class="screen hidden"><div class="heading"><div class="eyebrow">MANAGER AREA</div><button class="ghost" data-home>Home</button></div><h2>Admin approvals</h2><div id="adminLoginBox" class="card narrow"><p class="muted">Sign in with the administrator account created in Supabase Authentication.</p><form id="adminLogin"><label>Admin email<input id="adminEmail" type="email" required></label><label>Password<input id="adminPassword" type="password" required></label><button class="primary full">Sign in</button><p id="adminMessage"></p></form></div><div id="adminDashboard" class="hidden"><button class="secondary" id="refreshAdmin">Refresh list</button> <button class="ghost" id="adminLogout">Sign out</button><div id="submissionsList"></div></div></section>
-<section id="how" class="screen hidden"><div class="heading"><h2>How premium works</h2><button class="ghost" data-home>Home</button></div><article class="card"><ol><li>Transfer ₦1,000 to the OPay account shown.</li><li>Submit your full name, email, reference, payment time and receipt.</li><li>The admin reviews your transfer and approves or rejects it.</li><li>If approved, your 14-day access starts and a notification email is sent when email delivery is configured.</li><li>After 14 days, access expires and you must pay again.</li></ol><p>Support: <a href="https://wa.me/2347042320940">WhatsApp +2347042320940</a> or <a href="tel:+2347042320940">call</a>.</p></article></section>
-</main><footer>© <span id="year"></span> Brain Arena · Learn something today.</footer><script src="app.js"></script></body></html>
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10152f">
+
+<title>Brain Arena | Online Learning and Exam Practice</title>
+
+<meta name="description" content="Brain Arena helps students prepare for exams through interactive quizzes, subject-based practice, instant scores and simple explanations. Learn, practise and grow.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.webmanifest">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+<header>
+<a href="#" id="homeLink">
+<b class="logo">BA</b>
+<span>
+<b>Brain Arena</b>
+<small>LEARN · PRACTISE · GROW</small>
+</span>
+</a>
+<button class="ghost" id="adminOpen">Admin</button>
+</header>
+
+<main>
+
+<section id="home" class="screen hero">
+<div class="eyebrow">YOUR NEXT LEVEL STARTS HERE</div>
+<h1>Train your brain.<br><span>Own the exam.</span></h1>
+<p>Practise by subject, understand every answer, and track your progress.</p>
+
+<button class="primary" id="startBtn">Start practising →</button>
+<button class="secondary" id="howBtn">How premium works</button>
+
+<div class="stats">
+<b>30 <small>questions per subject</small></b>
+<b>14 days <small>premium access</small></b>
+<b>₦1,000 <small>premium fee</small></b>
+</div>
+</section>
+
+<section id="subjects" class="screen hidden">
+<div class="heading">
+<div>
+<div class="eyebrow">PICK YOUR BATTLE</div>
+<h2>Choose a subject</h2>
+</div>
+<button class="ghost" data-home>Home</button>
+</div>
+
+<p id="accessStatus" class="muted"></p>
+<div id="subjectGrid" class="grid"></div>
+
+<div id="lockedPanel" class="card hidden center">
+<h3>🔒 Unlock Premium</h3>
+<p>Get 14 days of quiz access for ₦1,000.</p>
+<button class="primary" id="payNow">Continue to payment →</button>
+</div>
+</section>
+
+<section id="payment" class="screen hidden">
+<div class="heading">
+<div>
+<div class="eyebrow">PREMIUM ACCESS</div>
+<h2>Pay and submit for approval</h2>
+</div>
+<button class="ghost" data-subjects>Back</button>
+</div>
+
+<div class="columns">
+
+<article class="card">
+<div class="eyebrow">TRANSFER ₦1,000</div>
+<h3>OPay transfer details</h3>
+<p class="muted">Transfer first, then attach your receipt.</p>
+
+<div class="row">
+<span>Account number</span>
+<b id="accountNumber">9021669942</b>
+<button id="copyAccount" class="secondary">Copy</button>
+</div>
+
+<div class="row">
+<span>Account name</span>
+<b>Joshua Jesuliho Akinyanmi</b>
+</div>
+
+<p class="warning">Submitting a receipt does not mean you have been approved. The admin will check the payment.</p>
+
+<p>Paid twice? Contact <b>+2347042320940</b></p>
+
+<p>
+<a href="https://wa.me/2347042320940" target="_blank">WhatsApp support</a>
+·
+<a href="tel:+2347042320940">Call support</a>
+</p>
+</article>
+
+<form id="paymentForm" class="card">
+<h3>Payment submission</h3>
+
+<label>Full name
+<input id="studentName" required maxlength="100" placeholder="Your full name">
+</label>
+
+<label>Gmail / email
+<input id="studentEmail" type="email" required maxlength="200" placeholder="you@example.com">
+</label>
+
+<label>Transaction reference
+<input id="paymentRef" required maxlength="120" placeholder="Transfer reference">
+</label>
+
+<label>Date and time
+<input id="paymentTime" type="datetime-local" required>
+</label>
+
+<label>Upload receipt
+<input id="receipt" type="file" accept="image/*,.pdf" required>
+</label>
+
+<small class="muted">Image or PDF, maximum 5 MB.</small>
+
+<label>Note (optional)
+<textarea id="paymentNote" rows="3" maxlength="500"></textarea>
+</label>
+
+<button id="submitPayment" class="primary full" type="submit">Submit for admin approval</button>
+
+<p id="paymentMessage" role="status" aria-live="polite"></p>
+</form>
+
+</div>
+</section>
+
+<section id="quiz" class="screen hidden">
+<div class="heading">
+<div>
+<div class="eyebrow">PRACTICE SESSION</div>
+<h2 id="quizTitle"></h2>
+</div>
+<button class="ghost" id="exitQuiz">Exit</button>
+</div>
+
+<div class="row">
+<span id="questionCount"></span>
+<b id="scoreNow"></b>
+</div>
+
+<div class="progress">
+<span id="progressFill"></span>
+</div>
+
+<article class="card">
+<div class="eyebrow" id="questionTopic"></div>
+<h3 id="questionText"></h3>
+<div id="options" class="options"></div>
+<div id="explanation" class="explanation hidden"></div>
+
+<button class="primary full" id="nextQuestion" disabled>Next question →</button>
+</article>
+</section>
+
+<section id="results" class="screen hidden center">
+<article class="card">
+<div class="eyebrow">SESSION COMPLETE</div>
+<h2 id="resultTitle">Well done!</h2>
+<div id="finalScore" class="score"></div>
+<p id="resultSummary"></p>
+<p id="resultSaved"></p>
+
+<button id="againBtn" class="primary">Try this subject again</button>
+<button data-subjects class="secondary">Choose another subject</button>
+</article>
+</section>
+
+<section id="admin" class="screen hidden">
+<div class="heading">
+<div class="eyebrow">MANAGER AREA</div>
+<button class="ghost" data-home>Home</button>
+</div>
+
+<h2>Admin approvals</h2>
+
+<div id="adminLoginBox" class="card narrow">
+<p class="muted">Sign in with the administrator account created in Supabase Authentication.</p>
+
+<form id="adminLogin">
+<label>Admin email
+<input id="adminEmail" type="email" required>
+</label>
+
+<label>Password
+<input id="adminPassword" type="password" required>
+</label>
+
+<button class="primary full">Sign in</button>
+<p id="adminMessage"></p>
+</form>
+</div>
+
+<div id="adminDashboard" class="hidden">
+<button class="secondary" id="refreshAdmin">Refresh list</button>
+<button class="ghost" id="adminLogout">Sign out</button>
+<div id="submissionsList"></div>
+</div>
+</section>
+
+<section id="how" class="screen hidden">
+<div class="heading">
+<h2>How premium works</h2>
+<button class="ghost" data-home>Home</button>
+</div>
+
+<article class="card">
+<ol>
+<li>Transfer ₦1,000 to the OPay account shown.</li>
+<li>Submit your full name, email, reference, payment time and receipt.</li>
+<li>The admin reviews your transfer and approves or rejects it.</li>
+<li>If approved, your 14-day access starts and a notification email is sent when email delivery is configured.</li>
+<li>After 14 days, access expires and you must pay again.</li>
+</ol>
+
+<p>
+Support:
+<a href="https://wa.me/2347042320940">WhatsApp +2347042320940</a>
+or
+<a href="tel:+2347042320940">call</a>.
+</p>
+</article>
+</section>
+
+</main>
+
+<footer>
+© <span id="year"></span> Brain Arena · Learn something today.
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
