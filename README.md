@@ -1,4 +1,20 @@
-# Brain Arena — rebuilt package
+🧠 Brain Arena
+
+Learn. Practise. Compete. Improve.
+
+Brain Arena is an educational learning platform designed to help students improve their knowledge through interactive quizzes, subject-based practice, instant scoring and easy-to-understand explanations.
+
+🚀 Visit Brain Arena: https://unrivaled-marshmallow-303273.netlify.app/
+
+Features
+
+- Interactive quizzes
+- Subject-based learning
+- Instant results and scoring
+- Clear explanations
+- Free and premium learning options
+
+Start learning today! Brain Arena — rebuilt package
 
 This rebuild includes a static site, 30 questions each for English, Mathematics, Biology, Chemistry and Physics, explanations, payment form with receipt upload, admin review UI, 14-day approval records, and Supabase Edge Functions for admin and student email notifications.
 
